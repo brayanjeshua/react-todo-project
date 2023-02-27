@@ -1,5 +1,5 @@
 import React from "react";
-import './Styles.css';
+import '../css/Styles.css';
 
 function TodoSearch({searchValue, setSearchValue} ) {
 
