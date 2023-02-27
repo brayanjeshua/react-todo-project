@@ -48,8 +48,6 @@ ul {
     outline-color: #61DAFA;
   }
 
-
-
   .TodoItem {
     background-color: #FAFAFA;
     position: relative;
@@ -99,7 +97,6 @@ ul {
   .Icon-delete:hover {
     color: red;
   }
-
 
   .CreateTodoButton {
     background-color: #61DAFA;
