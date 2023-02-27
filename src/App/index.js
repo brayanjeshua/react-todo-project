@@ -11,19 +11,41 @@ import './App.css';
 //   { text: 'LALALALAL', completed: true },
 // ];
 
-function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
+
+/**
+ * Custom Hook to Use Local Storage
+ * @param {*} itemName name to store in local storage
+ * @param {*} initialValue array of initial values
+ * @returns [item, saveItem]
+ */
+function useLocalStorage(itemName, initialValue) {
+
+  const localStorageItem = localStorage.getItem(itemName);
   
-  let parsedTodos;
-  if (!localStorageTodos) {
-    localStorageTodos.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
+  let parsedItem;
+  if (!localStorageItem) {
+    localStorageItem.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = [];
   } else {
-    parsedTodos = JSON.parse(localStorageTodos);
+    parsedItem = JSON.parse(localStorageItem);
   }
 
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    const stringifiedItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifiedItem);
+    setItem(newItem);
+  }
+
+  return [item, saveItem];
+}
+
+function App() {
+
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+
   const [searchValue, setSearchValue] = React.useState('');
-  const [todos, setTodos] = React.useState(parsedTodos);
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -36,11 +58,7 @@ function App() {
     searchedTodos = todos.filter((todo) => todo.text.toUpperCase().includes(searchValue.toUpperCase()));
   }
 
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringifiedTodos);
-    setTodos(newTodos);
-  }
+
 
   const markAsCompleteTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text === text);
