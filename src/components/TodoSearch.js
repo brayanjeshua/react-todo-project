@@ -1,15 +1,17 @@
 import React from "react";
 import './Styles.css';
 
-function TodoSearch() {
+function TodoSearch({searchValue, setSearchValue} ) {
+
     const onSearchValueChange = (event) => {
-        console.log(event.target.value);
+        setSearchValue(event.target.value);
+        console.log(searchValue);
     }
     return (
         <input 
             onChange={onSearchValueChange}
             className="TodoSearch"
-            placeholder="Cebolla"
+            placeholder="Search..."
         />
     );
 }
