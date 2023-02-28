@@ -3,7 +3,7 @@ import { useLocalStorage } from "./useLocalStorage";
 const TodoContext = React.createContext();
 
 function TodoProvider(props) {
-    const { 
+    const {
         item: todos,
         saveItem: saveTodos,
         loading,
@@ -20,27 +20,36 @@ function TodoProvider(props) {
     let searchedTodos = [];
 
     if (!searchValue.length > 0) {
-    searchedTodos = todos;
+        searchedTodos = todos;
     } else {
-    searchedTodos = todos.filter((todo) => todo.text.toUpperCase().includes(searchValue.toUpperCase()));
+        searchedTodos = todos.filter((todo) => todo.text.toUpperCase().includes(searchValue.toUpperCase()));
     }
 
     React.useEffect(() => {
-    console.log('totalTodos has been changed');
+        console.log('totalTodos has been changed');
     }, [totalTodos]);
 
     const markAsCompleteTodo = (text) => {
-    const todoIndex = todos.findIndex(todo => todo.text === text);
-    const newTodos = [...todos];
-    newTodos[todoIndex].completed = true;
-    saveTodos(newTodos);
+        const todoIndex = todos.findIndex(todo => todo.text === text);
+        const newTodos = [...todos];
+        newTodos[todoIndex].completed = true;
+        saveTodos(newTodos);
     }
 
     const deleteTodo = (text) => {
-    const todoIndex = todos.findIndex(todo => todo.text === text);
-    const newTodos = [...todos];
-    newTodos.splice(todoIndex, 1);
-    saveTodos(newTodos);
+        const todoIndex = todos.findIndex(todo => todo.text === text);
+        const newTodos = [...todos];
+        newTodos.splice(todoIndex, 1);
+        saveTodos(newTodos);
+    }
+
+    const addTodo = (text) => {
+        const newTodos = [...todos];
+        newTodos.push({
+            completed: false,
+            text
+        })
+        saveTodos(newTodos);
     }
 
     return (
@@ -56,6 +65,7 @@ function TodoProvider(props) {
             deleteTodo,
             openModal,
             setOpenModal,
+            addTodo,
         }}>
             {props.children}
         </TodoContext.Provider>
