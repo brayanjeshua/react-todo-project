@@ -11,12 +11,6 @@ function Modal( { children }) {
     }
     return ReactDOM.createPortal(
         <div className="ModalBackground">
-            <span 
-                className="Icon Icon-close"
-                onClick={onClosePopup}
-            >
-                X
-            </span>
             <div className="content">
                 {children}
             </div>
