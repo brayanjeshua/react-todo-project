@@ -3,14 +3,11 @@ import { TodoContext } from "../TodoContext";
 import '../css/Styles.css';
 
 function TodoCounter() {
+    const  { completedTodos: completed, totalTodos: total } = React.useContext(TodoContext);
     return (
-        <TodoContext.Consumer>
-            {( { completedTodos: completed, totalTodos: total }) =>  (
-            <h2 className="TodoCounter" >
-                You've completed {completed} / {total} tasks
-            </h2>
-            )}
-        </TodoContext.Consumer>
+        <h2 className="TodoCounter" >
+            You've completed {completed} / {total} tasks
+        </h2>
     );
 }
 
