@@ -3,11 +3,12 @@ import { TodoCounter } from '../components/TodoCounter'
 import { TodoSearch } from '../components/TodoSearch'
 import { TodoList } from '../components/TodoList'
 import { TodoItem } from '../components/TodoItem'
-import { CreateTodoButton } from '../components/TodoButton';
+import { CreateTodoButton } from '../components/CreateTodoButton';
 import { TodoContext } from "../TodoContext";
+import { Modal } from "../components/Modal";
 
 function AppUI() {
-  const { error, loading, searchedTodos, markAsCompleteTodo, deleteTodo } = React.useContext(TodoContext);
+  const { error, loading, searchedTodos, markAsCompleteTodo, deleteTodo, openModal, setOpenModal } = React.useContext(TodoContext);
     return (
         <React.Fragment>
           <TodoCounter />
@@ -25,9 +26,14 @@ function AppUI() {
                 onComplete={() =>markAsCompleteTodo(todo.text)}
                 onDelete={() => deleteTodo(todo.text)}
                   />
-              )} 
+              )}
             </TodoList>
-          <CreateTodoButton />
+            {!!openModal ? (
+              <Modal>
+                <p>TEXTO</p>
+              </Modal>
+            ) : null}
+          <CreateTodoButton setOpenModal={setOpenModal} />
       </React.Fragment>
     );
 }

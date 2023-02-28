@@ -136,3 +136,8 @@ ul {
     align-items: center;
     color: white;
   }
+
+  .ModalBackground .content {
+    background-color: #F9FBFC;
+    color: #000;
+  }
