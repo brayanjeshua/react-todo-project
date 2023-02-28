@@ -5,7 +5,7 @@ import { AppUI } from "./AppUI";
 function App() {
   return (
     <TodoProvider>
-      <AppUI/>
+      <AppUI />
     </TodoProvider>
   );
 }
