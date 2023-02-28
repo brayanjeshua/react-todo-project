@@ -15,7 +15,6 @@ function TodoForm({ addTodo, setOpenModal } ) {
 
     const onWrite = (event) => {
         setNewTodoValue(event.target.value);
-        console.log(newTodoValue);
     }
 
     return (
