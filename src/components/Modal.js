@@ -1,17 +1,10 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { TodoContext } from '../TodoContext';
 
-function Modal( { children }) {
-
-    const { setOpenModal } = React.useContext(TodoContext);
-
-    const onClosePopup = () => {
-        setOpenModal(false);
-    }
+function Modal({ children }) {
     return ReactDOM.createPortal(
         <div className="ModalBackground">
-            <div className="content">
+            <div>
                 {children}
             </div>
         </div>,

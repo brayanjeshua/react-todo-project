@@ -21,22 +21,23 @@ function TodoForm() {
     }
 
     return (
-        <form>
-            <label>...</label>
+        <form onSubmit={onSubmit}>
+            <label>Type your new Todo...</label>
             <textarea
                 onChange={onWrite}
                 placeholder="Cortar la cebolla...."
             />
-            <div>
+            <div className="TodoForm-buttonContainer">
                 <button
                     type="button"
+                    className="TodoForm-button TodoForm-button--cancel"
                     onClick={onCancel}
                 >
                     Cancel
                 </button>
                 <button
+                    className="TodoForm-button TodoForm-button--add"
                     type="submit"
-                    onClick={onSubmit}
                 >
                     Add
                 </button>
