@@ -81,15 +81,6 @@ ul {
   font-weight: bold;
 }
 
-.Icon-check {
-  position: absolute;
-  left: 12px;
-}
-
-.Icon-check--active {
-  color: #4caf50;
-}
-
 .Icon-delete {
   position: absolute;
   top: -24px;
