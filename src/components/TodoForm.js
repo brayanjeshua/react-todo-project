@@ -25,7 +25,7 @@ function TodoForm() {
             <label>Type your new Todo...</label>
             <textarea
                 onChange={onWrite}
-                placeholder="Cortar la cebolla...."
+                placeholder="Cut the onions...."
             />
             <div className="TodoForm-buttonContainer">
                 <button
