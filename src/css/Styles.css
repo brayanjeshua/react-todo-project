@@ -207,3 +207,11 @@ textarea:focus {
 .TodoForm-button--cancel {
   background: transparent;
 }
+
+.TodoSearch:disabled {
+  opacity: 25%;
+}
+
+.TodoCounter--loading {
+  opacity: 25%;
+}

@@ -21,13 +21,14 @@ function App() {
     setOpenModal,
     totalTodos,
     completedTodos,
+    searchValue,
     setSearchValue,
     addTodo,
   } = useTodos();
 
   return (
     <React.Fragment>
-      <TodoHeader>
+      <TodoHeader loading={loading}>
         <TodoCounter
           totalTodos={totalTodos}
           completedTodos={completedTodos}
@@ -40,10 +41,13 @@ function App() {
       <TodoList
         error={error}
         loading={loading}
+        searchText={searchValue}
         searchedTodos={searchedTodos}
         onError={() => <p>ERROR!</p>}
         onLoading={() => <p>Loading.....</p>}
         onEmptyTodos={() =>  <p>Create your own Todo!</p>}
+        onEmptySearchResults={(searchText) => <p>Without results for {searchText}</p>}
+        totalTodos={totalTodos}
         render={todo => (
           <TodoItem
             key={todo.text}
