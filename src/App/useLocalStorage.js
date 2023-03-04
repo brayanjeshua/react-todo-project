@@ -13,7 +13,20 @@ function useLocalStorage(itemName, initialValue) {
 
   React.useEffect(() => {
     try {
-      setTimeout(() => {
+
+        // If storage has been changed update the state after 2seconds...
+        window.addEventListener('storage', (event) => {
+          setLoading(true);
+          setItem([]);
+          setTimeout(() => {
+            const newState = event.newValue;
+            const parsedState =JSON.parse(newState);
+            setItem(parsedState);
+            setLoading(false);
+            return;
+          }, 2000);
+        });
+
         const localStorageItem = localStorage.getItem(itemName);
 
         let parsedItem;
@@ -26,15 +39,12 @@ function useLocalStorage(itemName, initialValue) {
 
         setItem(parsedItem);
         setLoading(false);
-      }, 1000)
     } catch (error) {
       console.error(error);
       setError(false);
     }
 
-
-
-  }, [itemName, initialValue]);
+  }, []);
 
   const saveItem = (newItem) => {
     try {
