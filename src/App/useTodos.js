@@ -14,7 +14,6 @@ function useTodos() {
     } = useLocalStorage('TODOS_V1', []);
 
     const [openModal, setOpenModal] = React.useState(false);
-
     const [searchValue, setSearchValue] = React.useState('');
 
     const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -55,19 +54,27 @@ function useTodos() {
         saveTodos(newTodos);
     }
 
-    return {
+
+    const states = {
         loading,
         error,
         totalTodos,
         completedTodos,
         searchValue,
-        setSearchValue,
         searchedTodos,
+        openModal,
+    }
+
+    const stateUpdaters = {
+        setSearchValue,
         markAsCompleteTodo,
         deleteTodo,
-        openModal,
         setOpenModal,
         addTodo,
+    }
+
+    return {
+        states, stateUpdaters
     };
 }
 

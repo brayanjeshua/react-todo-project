@@ -11,20 +11,25 @@ import { TodoForm } from "../components/TodoForm";
 
 
 function App() {
+  const { states, stateUpdaters } = useTodos();
+
   const {
     error,
     loading,
     searchedTodos,
-    markAsCompleteTodo,
-    deleteTodo,
     openModal,
-    setOpenModal,
     totalTodos,
     completedTodos,
     searchValue,
+  } = states;
+
+  const {
+    deleteTodo,
+    setOpenModal,
+    markAsCompleteTodo,
     setSearchValue,
     addTodo,
-  } = useTodos();
+  } = stateUpdaters;
 
   return (
     <React.Fragment>
@@ -45,7 +50,7 @@ function App() {
         searchedTodos={searchedTodos}
         onError={() => <p>ERROR!</p>}
         onLoading={() => <p>Loading.....</p>}
-        onEmptyTodos={() =>  <p>Create your own Todo!</p>}
+        onEmptyTodos={() => <p>Create your own Todo!</p>}
         onEmptySearchResults={(searchText) => <p>Without results for {searchText}</p>}
         totalTodos={totalTodos}
         render={todo => (
