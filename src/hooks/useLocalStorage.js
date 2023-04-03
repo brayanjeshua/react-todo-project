@@ -36,7 +36,7 @@ function useLocalStorage(itemName, initialValue) {
             const parsedItem = JSON.parse(newState);
             onSuccess(parsedItem)
             return;
-          }, 1000);
+          }, 3000);
         });
 
       const localStorageItem = localStorage.getItem(itemName);

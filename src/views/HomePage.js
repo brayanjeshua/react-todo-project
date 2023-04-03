@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useTodos } from "../hooks/useTodos";
-import { TodoHeader } from '../components/TodoHeader';
-import { TodoCounter } from '../components/TodoCounter';
-import { TodoSearch } from '../components/TodoSearch';
-import { TodoList } from '../components/TodoList'
-import { TodoItem } from '../components/TodoItem'
-import { CreateTodoButton } from '../components/CreateTodoButton';
+import { TodoHeader } from "../components/TodoHeader";
+import { TodoCounter } from "../components/TodoCounter";
+import { TodoSearch } from "../components/TodoSearch";
+import { TodoList } from "../components/TodoList";
+import { TodoItem } from "../components/TodoItem";
+import { CreateTodoButton } from "../components/CreateTodoButton";
 
 function HomePage() {
   const { states, stateUpdaters } = useTodos();
@@ -21,22 +21,13 @@ function HomePage() {
     searchValue,
   } = states;
 
-  const {
-    deleteTodo,
-    markAsCompleteTodo,
-    setSearchValue,
-  } = stateUpdaters;
+  const { deleteTodo, markAsCompleteTodo, setSearchValue } = stateUpdaters;
 
   return (
     <React.Fragment>
       <TodoHeader loading={loading}>
-        <TodoCounter
-          totalTodos={totalTodos}
-          completedTodos={completedTodos}
-        />
-        <TodoSearch
-          setSearchValue={setSearchValue}
-        />
+        <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
+        <TodoSearch setSearchValue={setSearchValue} />
       </TodoHeader>
 
       <TodoList
@@ -47,24 +38,26 @@ function HomePage() {
         onError={() => <p>ERROR!</p>}
         onLoading={() => <p>Loading.....</p>}
         onEmptyTodos={() => <p>Create your own Todo!</p>}
-        onEmptySearchResults={(searchText) => <p>Without results for {searchText}</p>}
+        onEmptySearchResults={(searchText) => (
+          <p>Without results for {searchText}</p>
+        )}
         totalTodos={totalTodos}
-        render={todo => (
+        render={(todo) => (
           <TodoItem
             key={todo.id}
             text={todo.text}
             completed={todo.completed}
             onComplete={() => markAsCompleteTodo(todo.id)}
             onDelete={() => deleteTodo(todo.id)}
-            onEdit={() => navigate('/edit/' + todo.id)}
+            onEdit={() => {
+              navigate("/edit/" + todo.id);
+            }}
           />
         )}
       />
-      <CreateTodoButton
-        onClick={() => navigate('/new')}
-      />
+      <CreateTodoButton onClick={() => navigate("/new")} />
     </React.Fragment>
   );
 }
 
-export { HomePage } ;
+export { HomePage };
