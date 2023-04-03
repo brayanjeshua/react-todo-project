@@ -1,5 +1,5 @@
 import React from "react";
-import { useTodos } from "./useTodos";
+import { useTodos } from "../hooks/useTodos";
 import { TodoHeader } from '../components/TodoHeader';
 import { TodoCounter } from '../components/TodoCounter';
 import { TodoSearch } from '../components/TodoSearch';
@@ -10,7 +10,7 @@ import { Modal } from "../components/Modal";
 import { TodoForm } from "../components/TodoForm";
 
 
-function App() {
+function HomePage() {
   const { states, stateUpdaters } = useTodos();
 
   const {
@@ -78,4 +78,4 @@ function App() {
   );
 }
 
-export default App;
+export { HomePage } ;

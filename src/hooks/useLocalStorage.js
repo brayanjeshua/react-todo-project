@@ -24,6 +24,7 @@ function useLocalStorage(itemName, initialValue) {
   });
 
   const onSync = () => dispatch({ type: actionTypes.sync });
+  
   React.useEffect(() => {
     try {
 
@@ -35,7 +36,7 @@ function useLocalStorage(itemName, initialValue) {
             const parsedItem = JSON.parse(newState);
             onSuccess(parsedItem)
             return;
-          }, 2000);
+          }, 5000);
         });
 
       const localStorageItem = localStorage.getItem(itemName);
@@ -54,7 +55,7 @@ function useLocalStorage(itemName, initialValue) {
       onError(error)
     }
 
-  }, []);
+  }, [] );
 
   const saveItem = (newItem) => {
     try {
