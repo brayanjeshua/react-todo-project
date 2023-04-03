@@ -91,6 +91,16 @@ ul {
   color: red;
 }
 
+.Icon-edit {
+  position: absolute;
+  top: -24px;
+  right: 48px;
+}
+
+.Icon-edit:hover {
+  color: #3b8397;
+}
+
 .CreateTodoButton {
   background-color: #61DAFA;
   box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);

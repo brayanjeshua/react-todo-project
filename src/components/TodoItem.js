@@ -1,5 +1,6 @@
 import React from "react";
 import { Checkbox } from "antd";
+import { EditOutlined  } from "@ant-design/icons";
 import '../css/Styles.css';
 
 function TodoItem(props) {
@@ -22,6 +23,12 @@ function TodoItem(props) {
       >
         X
       </span>
+
+      <EditOutlined 
+        className="Icon Icon-edit"
+        onClick={props.onEdit}
+      />
+
     </li>
   );
 }

@@ -11,6 +11,7 @@ function Router() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/new" element={<CreatePage/>} />
                 <Route path="/edit/:text" element={<EditPage />} />
+                <Route path="*" element={<p>Not Found</p>} />
             </Routes>
         </HashRouter>
     )

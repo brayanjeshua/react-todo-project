@@ -55,11 +55,12 @@ function HomePage() {
         totalTodos={totalTodos}
         render={todo => (
           <TodoItem
-            key={todo.text}
+            key={todo.id}
             text={todo.text}
             completed={todo.completed}
-            onComplete={() => markAsCompleteTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)}
+            onComplete={() => markAsCompleteTodo(todo.id)}
+            onDelete={() => deleteTodo(todo.id)}
+            onEdit={() => console.log('editar todos')}
           />
         )}
       />
