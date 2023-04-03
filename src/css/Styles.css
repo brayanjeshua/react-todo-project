@@ -226,3 +226,7 @@ textarea:focus {
 .TodoCounter--loading {
   opacity: 25%;
 }
+
+.Empty--Box {
+  margin-top: 4em;
+}

@@ -7,6 +7,7 @@ import { TodoSearch } from "../components/TodoSearch";
 import { TodoList } from "../components/TodoList";
 import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
+import { Empty } from "antd";
 
 function HomePage() {
   const { states, stateUpdaters } = useTodos();
@@ -37,9 +38,12 @@ function HomePage() {
         searchedTodos={searchedTodos}
         onError={() => <p>ERROR!</p>}
         onLoading={() => <p>Loading.....</p>}
-        onEmptyTodos={() => <p>Create your own Todo!</p>}
+        onEmptyTodos={() => <div className="Empty--Box"><Empty/></div>}
         onEmptySearchResults={(searchText) => (
-          <p>Without results for {searchText}</p>
+          <div className="Empty--Box">
+            <p>Without results for {searchText}</p>
+            <Empty />
+          </div>
         )}
         totalTodos={totalTodos}
         render={(todo) => (
