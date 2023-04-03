@@ -149,7 +149,8 @@ ul {
 form {
   width: 90%;
   max-width: 300px;
-  background-color: #fff;
+  /* background-color: #fff; */
+  margin: 0 auto;
   padding: 33px 40px;
   display: flex;
   justify-content: center;
