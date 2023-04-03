@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function TodoForm(props) {
-    const [newTodoValue, setNewTodoValue] = React.useState('');
+    const [newTodoValue, setNewTodoValue] = React.useState(props.defaultTodoText || '');
     const navigate = useNavigate();
 
     const onCancel = () => {
@@ -12,6 +12,7 @@ function TodoForm(props) {
     const onSubmit = (e) => {
         e.preventDefault();
         props.submitEvent(newTodoValue);
+        navigate('/');
     }
 
     const onWrite = (event) => {
@@ -22,6 +23,7 @@ function TodoForm(props) {
         <form onSubmit={onSubmit}>
             <label>{props.label}</label>
             <textarea
+                value={newTodoValue}
                 onChange={onWrite}
                 placeholder="Cut the onions...."
             />

@@ -25,7 +25,6 @@ function HomePage() {
     deleteTodo,
     markAsCompleteTodo,
     setSearchValue,
-    addTodo,
   } = stateUpdaters;
 
   return (
