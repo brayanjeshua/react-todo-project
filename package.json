@@ -1,5 +1,5 @@
 {
-  "name": "curso-react",
+  "name": "react-todo-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -43,5 +43,5 @@
   "devDependencies": {
     "gh-pages": "^5.0.0"
   },
-  "homepage": "https://brayanjeshua.github.io/curso-react"
+  "homepage": "https://brayanjeshua.github.io/react-todo-project"
 }
